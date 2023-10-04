@@ -31,16 +31,14 @@ class Commercial
     private ?string $telcomm = null;
 
     #[ORM\OneToMany(mappedBy: 'commercial', targetEntity: Users::class)]
-    private Collection $Users;
-
-    #[ORM\OneToMany(mappedBy: 'tauxcomm', targetEntity: Users::class)]
-    private Collection $users;
+    private Collection $commercial;
 
     public function __construct()
     {
-        $this->Users = new ArrayCollection();
-        $this->users = new ArrayCollection();
+        $this->commercial = new ArrayCollection();
     }
+
+
 
     public function getId(): ?int
     {
@@ -110,30 +108,32 @@ class Commercial
     /**
      * @return Collection<int, Users>
      */
-    public function getUsers(): Collection
+    public function getCommercial(): Collection
     {
-        return $this->Users;
+        return $this->commercial;
     }
 
-    public function addUser(Users $user): self
+    public function addCommercial(Users $commercial): static
     {
-        if (!$this->Users->contains($user)) {
-            $this->Users->add($user);
-            $user->setCommercial($this);
+        if (!$this->commercial->contains($commercial)) {
+            $this->commercial->add($commercial);
+            $commercial->setCommercial($this);
         }
 
         return $this;
     }
 
-    public function removeUser(Users $user): self
+    public function removeCommercial(Users $commercial): static
     {
-        if ($this->Users->removeElement($user)) {
+        if ($this->commercial->removeElement($commercial)) {
             // set the owning side to null (unless already changed)
-            if ($user->getCommercial() === $this) {
-                $user->setCommercial(null);
+            if ($commercial->getCommercial() === $this) {
+                $commercial->setCommercial(null);
             }
         }
 
         return $this;
     }
-}
+
+    }
+

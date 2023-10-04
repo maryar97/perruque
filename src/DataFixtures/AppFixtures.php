@@ -199,7 +199,7 @@ class AppFixtures extends Fixture
             ->setpassword(password_hash('password', PASSWORD_DEFAULT))
             ->setsexe('M')
             ->setCommercial($commercial1)
-            ->setmail('kouadiocelestin@live.fr')
+            ->setemail('kouadiocelestin@live.fr')
             ->setadresse('2 rue Cazotte')
             ->setcodepostal('75018')
             ->setville('Paris')
@@ -215,7 +215,7 @@ class AppFixtures extends Fixture
             ->setpassword(password_hash('password', PASSWORD_DEFAULT))
             ->setsexe('F')
             ->setCommercial($commercial2)
-            ->setmail('dembeleromane@gmail.com')
+            ->setemail('dembeleromane@gmail.com')
             ->setadresse('36 avenue De Clichy')
             ->setcodepostal('75018')
             ->setville('Paris')
@@ -231,7 +231,7 @@ class AppFixtures extends Fixture
             ->setpassword(password_hash('password', PASSWORD_DEFAULT))
             ->setsexe('M')
             ->setCommercial($commercial4)
-            ->setmail('trottieramand@live.fr')
+            ->setemail('trottieramand@live.fr')
             ->setadresse('88 boulevard Rochechouart')
             ->setcodepostal('80080')
             ->setville('Amiens')
@@ -247,7 +247,7 @@ class AppFixtures extends Fixture
             ->setpassword(password_hash('password', PASSWORD_DEFAULT))
             ->setsexe('F')
             ->setCommercial($commercial3)
-            ->setmail('choqueteliane54@outlook.fr')
+            ->setEmail('choqueteliane54@outlook.fr')
             ->setadresse('98 rue Caulaincourt')
             ->setcodepostal('60100')
             ->setville('Creil')
@@ -262,7 +262,7 @@ class AppFixtures extends Fixture
             ->setpassword(password_hash('password', PASSWORD_DEFAULT))
             ->setsexe('F')
             ->setCommercial($commercial6)
-            ->setmail('lefeuvremireille@gmail.com')
+            ->setEmail('lefeuvremireille@gmail.com')
             ->setadresse('128 boulevard De Clichy')
             ->setcodepostal('75018')
             ->setville('Paris')
@@ -278,7 +278,7 @@ class AppFixtures extends Fixture
             ->setpassword(password_hash('password', PASSWORD_DEFAULT))
             ->setsexe('F')
             ->setCommercial($commercial5)
-            ->setmail('jegoublanche@outlook.fr')
+            ->setEmail('jegoublanche@outlook.fr')
             ->setadresse('52 boulevard Barbes')
             ->setcodepostal('75018')
             ->setville('Paris')
@@ -293,7 +293,7 @@ class AppFixtures extends Fixture
             ->setpassword(password_hash('password', PASSWORD_DEFAULT))
             ->setsexe('F')
             ->setCommercial($commercial8)
-            ->setmail('duboismariejosey@yahoo.fr')
+            ->setEmail('duboismariejosey@yahoo.fr')
             ->setadresse('6 boulevard de Clichy')
             ->setcodepostal('75018')
             ->setville('Paris')
@@ -308,7 +308,7 @@ class AppFixtures extends Fixture
             ->setpassword(password_hash('password', PASSWORD_DEFAULT))
             ->setsexe('F')
             ->setCommercial($commercial7)
-            ->setmail('daucourtsigolene@yahoo.fr')
+            ->setEmail('daucourtsigolene@yahoo.fr')
             ->setadresse('112 boulevard De La Chapelle')
             ->setcodepostal('94110')
             ->setville('Arcueil')
@@ -323,7 +323,7 @@ class AppFixtures extends Fixture
             ->setpassword(password_hash('password', PASSWORD_DEFAULT))
             ->setsexe('F')
             ->setCommercial($commercial10)
-            ->setmail('affrelou@yahoo.fr')
+            ->setEmail('affrelou@yahoo.fr')
             ->setadresse('60 rue De Torcy')
             ->setcodepostal('75018')
             ->setville('Paris')
@@ -338,7 +338,7 @@ class AppFixtures extends Fixture
             ->setpassword(password_hash('password', PASSWORD_DEFAULT))
             ->setsexe('F')
             ->setCommercial($commercial9)
-            ->setmail('bureauclaudine4@live.fr')
+            ->setEmail('bureauclaudine4@live.fr')
             ->setadresse('280 boulevard Michelet ')
             ->setcodepostal('13008')
             ->setville('Marseille')
@@ -353,7 +353,7 @@ class AppFixtures extends Fixture
             ->setpassword(password_hash('password', PASSWORD_DEFAULT))
             ->setsexe('F')
             ->setCommercial($commercial1)
-            ->setmail('chapuisdeborah@live.fr')
+            ->setEmail('chapuisdeborah@live.fr')
             ->setadresse('29 rue Desire Pellaprat')
             ->setcodepostal('13008')
             ->setville('Marseille')
@@ -368,7 +368,7 @@ class AppFixtures extends Fixture
             ->setpassword(password_hash('password', PASSWORD_DEFAULT))
             ->setsexe('F')
             ->setCommercial($commercial2)
-            ->setmail('cuvilliermarie@gmail.com')
+            ->setEmail('cuvilliermarie@gmail.com')
             ->setadresse('4 rue des Recolettes ')
             ->setcodepostal('13001')
             ->setville('Marseille')
@@ -383,7 +383,7 @@ class AppFixtures extends Fixture
             ->setpassword(password_hash('password', PASSWORD_DEFAULT))
             ->setsexe('F')
             ->setCommercial($commercial3)
-            ->setmail('garnierclara@gmail.com')
+            ->setEmail('garnierclara@gmail.com')
             ->setadresse('39 rue Saint Remi')
             ->setcodepostal('33000')
             ->setville('Bordeaux')
@@ -398,7 +398,7 @@ class AppFixtures extends Fixture
             ->setpassword(password_hash('password', PASSWORD_DEFAULT))
             ->setsexe('F')
             ->setCommercial($commercial4)
-            ->setmail('lemahieupeggy@outlook.fr')
+            ->setEmail('lemahieupeggy@outlook.fr')
             ->setadresse('52 rue Croix de Seguey')
             ->setcodepostal('33000')
             ->setville('Bordeaux')
@@ -413,7 +413,7 @@ class AppFixtures extends Fixture
             ->setpassword(password_hash('password', PASSWORD_DEFAULT))
             ->setsexe('F')
             ->setCommercial($commercial5)
-            ->setmail('anouilhceline@outlook.fr')
+            ->setEmail('anouilhceline@outlook.fr')
             ->setadresse('7 rue du Palais Gallien')
             ->setcodepostal('33000')
             ->setville('Bordeaux')
@@ -583,62 +583,62 @@ class AppFixtures extends Fixture
             $manager->persist($categorie3);
 
         $souscategorie1 = new Categorie();
-        $souscategorie1->setnomcat('BONNETS')
+        $souscategorie1->setnomcat('')
             ->setimage('');
             $manager->persist($souscategorie1);
 
         $souscategorie2 = new Categorie();
-        $souscategorie2->setnomcat('COLORATION')
+        $souscategorie2->setnomcat('')
             ->setimage('');
             $manager->persist($souscategorie2);
 
         $souscategorie3 = new Categorie();
-        $souscategorie3->setnomcat('LISSEUR PEIGNE CHAUFFANT')
+        $souscategorie3->setnomcat('')
             ->setimage('');
             $manager->persist($souscategorie3);
 
         $souscategorie4 = new Categorie();
-        $souscategorie4->setnomcat('Carré plongeant')
+        $souscategorie4->setnomcat('')
             ->setimage('');
             $manager->persist($souscategorie4);
 
         $souscategorie5 = new Categorie();
-        $souscategorie5->setnomcat('Perruques courte')
+        $souscategorie5->setnomcat('')
             ->setimage('');
             $manager->persist($souscategorie5);
 
         $souscategorie6 = new Categorie();
-        $souscategorie6->setnomcat('Perruques 360°')
+        $souscategorie6->setnomcat('')
             ->setimage('');
             $manager->persist($souscategorie6);
 
         $souscategorie7 = new Categorie();
-        $souscategorie7->setnomcat('Perruques de couleurs ')
+        $souscategorie7->setnomcat(' ')
             ->setimage('');
             $manager->persist($souscategorie7);
 
         $souscategorie8 = new Categorie();
-        $souscategorie8->setnomcat('Perruques frange')
+        $souscategorie8->setnomcat('')
             ->setimage('');
             $manager->persist($souscategorie8);
 
         $souscategorie9 = new Categorie();
-        $souscategorie9->setnomcat('Perruques sans colle')
+        $souscategorie9->setnomcat('')
             ->setimage('');
             $manager->persist($souscategorie9);
 
         $souscategorie10 = new Categorie();
-        $souscategorie10->setnomcat('PACK 3 BUNDLE')
+        $souscategorie10->setnomcat('')
             ->setimage('');
             $manager->persist($souscategorie10);
 
         $souscategorie11 = new Categorie();
-        $souscategorie11->setnomcat('PACK 3 BUNDLE + CLOSURE')
+        $souscategorie11->setnomcat('')
             ->setimage('');
             $manager->persist($souscategorie11);
 
         $souscategorie12 = new Categorie();
-        $souscategorie12->setnomcat('PACK 3  BUNDLE DÉGRADÉ  + CLOSURE')
+        $souscategorie12->setnomcat('')
             ->setimage('');
             $manager->persist($souscategorie12);
 

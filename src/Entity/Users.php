@@ -2,93 +2,142 @@
 
 namespace App\Entity;
 
-use App\Repository\UsersRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\Commercial;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\UsersRepository;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Security\Core\Users\PasswordAuthenticatedUsersInterface;
-use Symfony\Component\Security\Core\Users\UsersInterface;
-use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: UsersRepository::class)]
-#[ORM\Table(name: '`users`')]
-#[UniqueEntity(fields: ['email'], message: 'cet email a déjà été utiliser')]
-class Users 
+#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+class Users implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
+    #[ORM\Column(length: 180, unique: true)]
+    private ?string $email = null;
+
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank(message: 'Veuillez entrer votre nom')]
-    #[Assert\Length(min: 5, minMessage: "Le nom est trop court")]
     private ?string $nom = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank(message: 'Veuillez entrer votre prenom')]
-    #[Assert\Length(min: 4, minMessage: "Le prenom est trop court")]
     private ?string $prenom = null;
 
-
-    private $newPassword;
-    private ?string $password = null;
-
-    
-
-
-    #[ORM\Column(length: 10)]
+    #[ORM\Column(length: 255)]
     private ?string $sexe = null;
 
-    #[ORM\Column(length: 100, unique: true)]
-    #[Assert\NotBlank(message: 'Veuillez entrer votre email')]
-    #[Assert\Email(message: 'Veuillez entrer votre email',)]
-    private ?string $mail = null;
+    #[ORM\ManyToOne(inversedBy: 'commercial')]
+    private ?Commercial $commercial = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank(message: 'Veuillez entrer votre adresse')]
-    #[Assert\Length(min: 10, minMessage: "La adresse est trop court")]
     private ?string $adresse = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank(message: 'Veuillez entrer votre code postal')]
-    #[Assert\Length(min: 5, minMessage: "Le code postal est trop court")]
     private ?string $codepostal = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank(message: 'Veuillez entrer votre ville')]
-    #[Assert\Length(min: 5, minMessage: "Le nom de votre ville est trop court")]
     private ?string $ville = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $datecreation = null;
 
-    #[ORM\Column(type: 'boolean')]
-    private $isVerified = false;
-
-    #[ORM\OneToMany(mappedBy: 'Users', targetEntity: Commande::class)]
-    private Collection $commandes;
-
-    #[ORM\ManyToOne(inversedBy: 'Users')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Commercial $commercial = null;
-
     #[ORM\Column(length: 255)]
-    private ?array $roles = [];
-
-    #[ORM\Column(length: 50)]
     private ?string $telephone = null;
 
-    public function __construct()
-    {
-        $this->commandes = new ArrayCollection();
-    }
+
+    #[ORM\Column]
+    private array $roles = [];
+
+    /**
+     * @var string The hashed password
+     */
+    #[ORM\Column]
+    private ?string $password = null;
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): static
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): static
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @see PasswordAuthenticatedUserInterface
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): static
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials(): void
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
+    }
+    public function getCommercial(): ?Commercial
+    {
+        return $this->commercial;
+    }
+
+    public function setCommercial(?Commercial $commercial): static
+    {
+        $this->commercial = $commercial;
+
+        return $this;
     }
 
     public function getNom(): ?string
@@ -96,7 +145,7 @@ class Users
         return $this->nom;
     }
 
-    public function setNom(string $nom): self
+    public function setNom(string $nom): static
     {
         $this->nom = $nom;
 
@@ -108,21 +157,9 @@ class Users
         return $this->prenom;
     }
 
-    public function setPrenom(string $prenom): self
+    public function setPrenom(string $prenom): static
     {
         $this->prenom = $prenom;
-
-        return $this;
-    }
-
-    public function getPassword(): ?string
-    {
-        return $this->password;
-    }
-
-    public function setPassword(string $password): self
-    {
-        $this->password = $password;
 
         return $this;
     }
@@ -132,31 +169,18 @@ class Users
         return $this->sexe;
     }
 
-    public function setSexe(string $sexe): self
+    public function setSexe(string $sexe): static
     {
         $this->sexe = $sexe;
 
         return $this;
     }
-
-    public function getMail(): ?string
-    {
-        return $this->mail;
-    }
-
-    public function setMail(string $mail): self
-    {
-        $this->mail = $mail;
-
-        return $this;
-    }
-
     public function getAdresse(): ?string
     {
         return $this->adresse;
     }
 
-    public function setAdresse(string $adresse): self
+    public function setAdresse(string $adresse): static
     {
         $this->adresse = $adresse;
 
@@ -168,7 +192,7 @@ class Users
         return $this->codepostal;
     }
 
-    public function setCodepostal(string $codepostal): self
+    public function setCodepostal(string $codepostal): static
     {
         $this->codepostal = $codepostal;
 
@@ -180,7 +204,7 @@ class Users
         return $this->ville;
     }
 
-    public function setVille(string $ville): self
+    public function setVille(string $ville): static
     {
         $this->ville = $ville;
 
@@ -192,92 +216,9 @@ class Users
         return $this->datecreation;
     }
 
-    public function setDatecreation(\DateTimeInterface $datecreation): self
+    public function setDatecreation(\DateTimeInterface $datecreation): static
     {
         $this->datecreation = $datecreation;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Commande>
-     */
-    public function getCommandes(): Collection
-    {
-        return $this->commandes;
-    }
-
-    public function addCommande(Commande $commande): self
-    {
-        if (!$this->commandes->contains($commande)) {
-            $this->commandes->add($commande);
-            $commande->setUsers($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCommande(Commande $commande): self
-    {
-        if ($this->commandes->removeElement($commande)) {
-            // set the owning side to null (unless already changed)
-            if ($commande->getUsers() === $this) {
-                $commande->setUsers(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function getCommercial(): ?Commercial
-    {
-        return $this->commercial;
-    }
-
-    public function setCommercial(?Commercial $commercial): self
-    {
-        $this->commercial = $commercial;
-
-        return $this;
-    }
-
-    public function getRoles(): ?array
-    {
-        return $this->roles;
-    }
-
-    public function setRoles(array $roles): self
-    {
-
-        $this->roles = $roles;
-
-        return $this;
-    }
-   
-    public function getNewPassword()
-    {
-        return $this->newPassword;
-    }
-
-    /**
-     * Set the value of newPassword
-     *
-     * @return  self
-     */ 
-    public function setNewPassword($newPassword)
-    {
-        $this->newPassword = $newPassword;
-
-        return $this;
-    }
-    public function isVerified(): bool
-    {
-        return $this->isVerified;
-    }
-
-    public function setIsVerified(bool $isVerified): static
-    {
-        $this->isVerified = $isVerified;
 
         return $this;
     }
@@ -293,4 +234,5 @@ class Users
 
         return $this;
     }
+    
 }
