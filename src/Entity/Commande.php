@@ -51,13 +51,15 @@ class Commande
     private ?float $facturetotalht = null;
 
 
-    #[ORM\ManyToOne(inversedBy: 'commandes')]
+    #[ORM\ManyToOne(targetEntity: Users::class)]
     #[ORM\JoinColumn(nullable: false)]
     private ?Users $Users = null;
 
     #[ORM\ManyToOne(inversedBy: 'Commande')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Livraison $livraison = null;
+
+    
 
     public function getId(): ?int
     {

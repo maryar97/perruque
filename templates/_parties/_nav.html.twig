@@ -7,54 +7,54 @@
 		<div class="collapse navbar-collapse" id="navbarColor03">
 			<ul class="navbar-nav me-auto">
 				<li class="nav-item">
-					<a class="nav-link" href="#">ACCUEIL</a>
+					<a class="nav-link" href="{{path('app_accueil')}}">ACCUEIL</a>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">PERRUQUES</a>
 					<div class="dropdown-menu dark">
-						<a class="dropdown-item" href="#">CARRÉ PLONGEANT</a>
-						<a class="dropdown-item" href="#">PERRUQUE COURTE</a>
-						<a class="dropdown-item" href="#">PERRUQUES 360°</a>
-						<a class="dropdown-item" href="#">PERRUQUES DE COULEUR°</a>
-						<a class="dropdown-item" href="/perruques/frange">PERRUQUES FRANGE</a>
-						<a class="dropdown-item" href="#">PERRUQUES SANS COLLE</a>
+						<a class="dropdown-item" href="{{path('app_carr_plongeant')}}">CARRÉ PLONGEANT</a>
+						<a class="dropdown-item" href="{{path('app_perruque_courte')}}">PERRUQUE COURTE</a>
+						<a class="dropdown-item" href="{{path('app_perruques360_')}}">PERRUQUES 360°</a>
+						<a class="dropdown-item" href="{{path('app_perruques_de_couleurs')}}">PERRUQUES DE COULEUR°</a>
+						<a class="dropdown-item" href="{{path('app_perruques_frange')}}">PERRUQUES FRANGE</a>
+						<a class="dropdown-item" href="{{path('app_perruques_sans_colle')}}">PERRUQUES SANS COLLE</a>
 					</li>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">TISSAGES BRÉSILIEN</a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" href="#">PACK 3 BUNDLE</a>
-						<a class="dropdown-item" href="#">PACK 3 BUNDLE + CLOSURE
+						<a class="dropdown-item" href="{{path('app_pack3_bundle')}}">PACK 3 BUNDLE</a>
+						<a class="dropdown-item" href="{{path('app_pack3_bundle_plus_closure')}}">PACK 3 BUNDLE + CLOSURE
 						</a>
-						<a class="dropdown-item" href="#">PACK 3 BUNDLE DÉGRADÉ + CLOSURE
+						<a class="dropdown-item" href="{{path('app_pack3_bundle_d_grad_plus_closure')}}">PACK 3 BUNDLE DÉGRADÉ + CLOSURE
 						</a>
 					</li>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">ACCESSOIRES</a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" href="#">BONNETS</a>
-						<a class="dropdown-item" href="#">COLORATION</a>
-						<a class="dropdown-item" href="#">LISSEUR CHAUFFANT</a>
+						<a class="dropdown-item" href="{{path('app_bonnet')}}">BONNETS</a>
+						<a class="dropdown-item" href="{{path('app_coloration')}}">COLORATION</a>
+						<a class="dropdown-item" href="{{path('app_lisseur_peigne_chauffant')}}">LISSEUR CHAUFFANT</a>
 					</li>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">A PROPOS DE LYARHAIR</a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" href="#">HISTOIRE DE NOTRE MARQUE</a>
-						<a class="dropdown-item" href="#">SOINS CAPILLAIRES</a>
-						<a class="dropdown-item" href="#">CONTACTEZ NOUS</a>
+						<a class="dropdown-item" href="{{path('app_histoire_de_notre_marque')}}">HISTOIRE DE NOTRE MARQUE</a>
+						<a class="dropdown-item" href="{{path('app_soins_capillaires')}}">SOINS CAPILLAIRES</a>
+						<a class="dropdown-item" href="{{path('app_contactez_nous')}}">CONTACTEZ NOUS</a>
 					</li>
 				</li>
 			</ul>
 
 			<a class"d-flex" href="#">
-				<button type="button" class="btn btn-dark text-black me-2">Panier( 0 )</button>
+				<button type="button" class="btn btn-light text-black me-2">Panier( 0 )</button>
 			</a>
 
 
 			<form class="d-flex" role="search">
-				<button type="button" class="btn btn-dark">
+				<button type="button" class="btn btn-light">
 
 					<div>
 						<a class="btn-outline-success text-black" href="{{path('app_login')}}">Connexion</a>

@@ -204,7 +204,7 @@ class AppFixtures extends Fixture
             ->setcodepostal('75018')
             ->setville('Paris')
             ->setRoles(['ROLE_ADMIN'])
-            ->setdatecreation(new \DateTime())
+            ->setCreatedAt(new \DateTimeImmutable())
             ->settelephone('0765894512');
             $manager->persist($users1);
 
@@ -219,7 +219,7 @@ class AppFixtures extends Fixture
             ->setadresse('36 avenue De Clichy')
             ->setcodepostal('75018')
             ->setville('Paris')
-            ->setdatecreation(new \DateTime())
+            ->setCreatedAt(new \DateTimeImmutable())
             ->settelephone('0689953612');
             $manager->persist($users2);
 
@@ -235,7 +235,7 @@ class AppFixtures extends Fixture
             ->setadresse('88 boulevard Rochechouart')
             ->setcodepostal('80080')
             ->setville('Amiens')
-            ->setdatecreation(new \DateTime())
+            ->setCreatedAt(new \DateTimeImmutable())
             ->settelephone('0684125696');
             $manager->persist($users3);
 
@@ -251,7 +251,7 @@ class AppFixtures extends Fixture
             ->setadresse('98 rue Caulaincourt')
             ->setcodepostal('60100')
             ->setville('Creil')
-            ->setdatecreation(new \DateTime())
+            ->setCreatedAt(new \DateTimeImmutable())
             ->settelephone('0724517895');
             $manager->persist($users4);
 
@@ -266,7 +266,7 @@ class AppFixtures extends Fixture
             ->setadresse('128 boulevard De Clichy')
             ->setcodepostal('75018')
             ->setville('Paris')
-            ->setdatecreation(new \DateTime())
+            ->setCreatedAt(new \DateTimeImmutable())
             ->settelephone('0708541269');
             $manager->persist($users5);
 
@@ -282,7 +282,7 @@ class AppFixtures extends Fixture
             ->setadresse('52 boulevard Barbes')
             ->setcodepostal('75018')
             ->setville('Paris')
-            ->setdatecreation(new \DateTime())
+            ->setCreatedAt(new \DateTimeImmutable())
             ->settelephone('0787451265');
             $manager->persist($users6);
 
@@ -297,7 +297,7 @@ class AppFixtures extends Fixture
             ->setadresse('6 boulevard de Clichy')
             ->setcodepostal('75018')
             ->setville('Paris')
-            ->setdatecreation(new \DateTime())
+            ->setCreatedAt(new \DateTimeImmutable())
             ->settelephone('0622445566');
             $manager->persist($users7);
 
@@ -312,7 +312,7 @@ class AppFixtures extends Fixture
             ->setadresse('112 boulevard De La Chapelle')
             ->setcodepostal('94110')
             ->setville('Arcueil')
-            ->setdatecreation(new \DateTime())
+            ->setCreatedAt(new \DateTimeImmutable())
             ->settelephone('0799887744');
             $manager->persist($users8);
 
@@ -327,7 +327,7 @@ class AppFixtures extends Fixture
             ->setadresse('60 rue De Torcy')
             ->setcodepostal('75018')
             ->setville('Paris')
-            ->setdatecreation(new \DateTime())
+            ->setCreatedAt(new \DateTimeImmutable())
             ->settelephone('0733415278');
             $manager->persist($users9);
 
@@ -342,7 +342,7 @@ class AppFixtures extends Fixture
             ->setadresse('280 boulevard Michelet ')
             ->setcodepostal('13008')
             ->setville('Marseille')
-            ->setdatecreation(new \DateTime())
+            ->setCreatedAt(new \DateTimeImmutable())
             ->settelephone('0755998430');
             $manager->persist($users10);
 
@@ -357,7 +357,7 @@ class AppFixtures extends Fixture
             ->setadresse('29 rue Desire Pellaprat')
             ->setcodepostal('13008')
             ->setville('Marseille')
-            ->setdatecreation(new \DateTime())
+            ->setCreatedAt(new \DateTimeImmutable())
             ->settelephone('0777763067');
             $manager->persist($users11);
 
@@ -372,7 +372,7 @@ class AppFixtures extends Fixture
             ->setadresse('4 rue des Recolettes ')
             ->setcodepostal('13001')
             ->setville('Marseille')
-            ->setdatecreation(new \DateTime())
+            ->setCreatedAt(new \DateTimeImmutable())
             ->settelephone('0605802768');
             $manager->persist($users12);
 
@@ -387,7 +387,7 @@ class AppFixtures extends Fixture
             ->setadresse('39 rue Saint Remi')
             ->setcodepostal('33000')
             ->setville('Bordeaux')
-            ->setdatecreation(new \DateTime())
+            ->setCreatedAt(new \DateTimeImmutable())
             ->settelephone('0626589004');
             $manager->persist($users13);
 
@@ -402,7 +402,7 @@ class AppFixtures extends Fixture
             ->setadresse('52 rue Croix de Seguey')
             ->setcodepostal('33000')
             ->setville('Bordeaux')
-            ->setdatecreation(new \DateTime())
+            ->setCreatedAt(new \DateTimeImmutable())
             ->settelephone('0765890385');
             $manager->persist($users14);
 
@@ -417,7 +417,7 @@ class AppFixtures extends Fixture
             ->setadresse('7 rue du Palais Gallien')
             ->setcodepostal('33000')
             ->setville('Bordeaux')
-            ->setdatecreation(new \DateTime())
+            ->setCreatedAt(new \DateTimeImmutable())
             ->settelephone('0769639654');
             $manager->persist($users15);
 

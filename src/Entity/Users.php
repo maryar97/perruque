@@ -3,9 +3,11 @@
 namespace App\Entity;
 
 use App\Entity\Commercial;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UsersRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -43,9 +45,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $ville = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $datecreation = null;
-
+    
     #[ORM\Column(length: 255)]
     private ?string $telephone = null;
 
@@ -56,8 +56,22 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var string The hashed password
      */
+    
     #[ORM\Column]
     private ?string $password = null;
+
+    #[ORM\OneToMany(mappedBy: 'users', targetEntity: Commande::class)]
+    private Collection $commande;
+
+    #[ORM\Column(type: 'datetime_immutable', options:['default' => 'CURRENT_TIMESTAMP'])]
+    private ?\DateTimeImmutable $created_at = null;
+
+
+    public function __construct()
+    {
+        $this->commande = new ArrayCollection();
+        $this->created_at = new \DateTimeImmutable();
+    }
 
     public function getId(): ?int
     {
@@ -69,7 +83,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->email;
     }
 
-    public function setEmail(string $email): static
+    public function setEmail(string $email): self
     {
         $this->email = $email;
 
@@ -98,7 +112,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return array_unique($roles);
     }
 
-    public function setRoles(array $roles): static
+    public function setRoles(array $roles): self
     {
         $this->roles = $roles;
 
@@ -113,7 +127,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->password;
     }
 
-    public function setPassword(string $password): static
+    public function setPassword(string $password): self
     {
         $this->password = $password;
 
@@ -133,7 +147,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->commercial;
     }
 
-    public function setCommercial(?Commercial $commercial): static
+    public function setCommercial(?Commercial $commercial): self
     {
         $this->commercial = $commercial;
 
@@ -145,7 +159,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->nom;
     }
 
-    public function setNom(string $nom): static
+    public function setNom(string $nom): self
     {
         $this->nom = $nom;
 
@@ -157,7 +171,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->prenom;
     }
 
-    public function setPrenom(string $prenom): static
+    public function setPrenom(string $prenom): self
     {
         $this->prenom = $prenom;
 
@@ -169,7 +183,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->sexe;
     }
 
-    public function setSexe(string $sexe): static
+    public function setSexe(string $sexe): self
     {
         $this->sexe = $sexe;
 
@@ -180,7 +194,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->adresse;
     }
 
-    public function setAdresse(string $adresse): static
+    public function setAdresse(string $adresse): self
     {
         $this->adresse = $adresse;
 
@@ -192,7 +206,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->codepostal;
     }
 
-    public function setCodepostal(string $codepostal): static
+    public function setCodepostal(string $codepostal): self
     {
         $this->codepostal = $codepostal;
 
@@ -204,21 +218,9 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->ville;
     }
 
-    public function setVille(string $ville): static
+    public function setVille(string $ville): self
     {
         $this->ville = $ville;
-
-        return $this;
-    }
-
-    public function getDatecreation(): ?\DateTimeInterface
-    {
-        return $this->datecreation;
-    }
-
-    public function setDatecreation(\DateTimeInterface $datecreation): static
-    {
-        $this->datecreation = $datecreation;
 
         return $this;
     }
@@ -228,11 +230,54 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->telephone;
     }
 
-    public function setTelephone(string $telephone): static
+    public function setTelephone(string $telephone): self
     {
         $this->telephone = $telephone;
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, commande>
+     */
+    public function getCommande(): Collection
+    {
+        return $this->commande;
+    }
+
+    public function addCommande(commande $commande): self
+    {
+        if (!$this->commande->contains($commande)) {
+            $this->commande->add($commande);
+            $commande->setUsers($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommande(commande $commande): self
+    {
+        if ($this->commande->removeElement($commande)) {
+            // set the owning side to null (unless already changed)
+            if ($commande->getUsers() === $this) {
+                $commande->setUsers(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->created_at;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $created_at): self
+    {
+        $this->created_at = $created_at;
+
+        return $this;
+    }
+
     
 }
