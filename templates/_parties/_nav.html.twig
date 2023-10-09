@@ -50,7 +50,9 @@
 			<ul class="navbar-nav ms-auto mb-lg-0">
 			<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 			  <li class="nav-item">
-			     <a class="nav-link" href"#">Panier (0)</a>
+			     <a class"navco" href="/panier">
+				<button type="button" class="btn btn-light navco text-black">Panier( 0 )</button>
+			     </a>
 			  </li>
 			{% if app.user %}
 			  <li class="nav-item">
@@ -61,9 +63,6 @@
 				  <a class="nav-link" href="{{ path('app_login')}}">Me connecter</a>
 				  </li>
 				  {% endif %}
-
-
-
 			
 
 		</div>
