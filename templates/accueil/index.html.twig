@@ -6,29 +6,95 @@
 
 {% block body %}
 	<!-- <img src="images/Perruques 360°/image50.jpeg" alt=""> -->
-<section class="container">
+	<section class="container">
 		<div class="row">
 			<div class="col">
-			
-	<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-		<div class="carousel-inner">
-			<div class="carousel-item active" data-bs-interval="2000">
-				<img src="images/Perruques/Perruques 360°/image47.jpeg" class="d-block w-50" alt="...">
+				<div>
+					<p>
+						<br>
+						<FONT color="#C7050E">
+							<h2>
+								Perruque
+							</h2>
+						</FONT>
+						<br>
+					</p>
+				</br>
+				Une sélection de perruques afro de qualité adaptée à vos besoins, légères et faciles à mettre en place.
+				<br/>
+				Si vous recherchez une teinte en particulier,
+				<FONT color="#C7050E">perruque orangée</FONT>
+				ou
+				<FONT color="#C7050E">perruque noire
+				</FONT>.
+				<br/>
+				LYAR Hair et les fabricants redoublent d'inventivité pour des styles variés :
+				<br/>
+				bouclés ou lisses, courtes ou longues; des modèles toujours plus faciles à poser:<br>
+			</br>
+
+
+			<a href="{{ path('app_carr_plongeant') }}">
+				<FONT color="#C7050E">CARRÉ PLONGEANT
+				</FONT>
+				<br/>
+				<a href="{{ path('app_perruque_courte') }}">
+					<FONT color="#C7050E">
+						PERRUQUE COURTE
+					</FONT>
+					<br/>
+					<a href="{{ path('app_perruques360_') }}">
+						<FONT color="#C7050E">LACE WIG
+						</FONT>
+					</a>
+					<br/>
+					<a href="{{ path('app_perruques_de_couleurs') }}">
+						<FONT color="#C7050E">PERRUQUE DE COULEUR
+						</FONT>
+						<br/>
+					</a>
+					<a href="{{ path('app_perruques_frange') }}">
+						<FONT color="#C7050E">PERRUQUE DE FRANGE
+						</FONT>
+						<br/>
+					</a>
+					<a href="{{ path('app_perruques_sans_colle') }}">
+						<FONT color="#C7050E">PERRUQUE SANS COLLE
+						</FONT>
+						<br/>
+					</a>
+
+
+					<br/>
+					Vous avez le choix des matières: perruques naturelles ou perruques synthétiques
+					<br/>
+					en n'oubliant pas l'indispensable bonnet qui permet de conserver toute leur fraicheur à vos
+																					perruques.<br/>
+					Profitez également des nombreux modèles de perruques et lace wig à petits prix.
+
+				</p>
+				<br/>
 			</div>
-			<div class="carousel-item" data-bs-interval="2000">
-				<img src="images/Perruques/Carré plongeant/image4.jpg" class="d-block w-50" alt="...">
+
+			{% for category in categories %}
+				{% if category.parent == null %}
+
+					<div class="col-12">
+						<h2> {{ category.nomcat }} </h2> 
+					</div>
+					{% else %}
+						<div class="col-3">
+							<a href="#">{{ category.nomcat}} </a>
+							</div>
+				{% endif %}
+
+			{% endfor %}
+			<div class="col-12">
+				{{ dump()}}
 			</div>
-			<div class="carousel-item" data-bs-interval="2000">
-				<img src="images/Perruques/Perruque courte/image16.jpg" class="d-block w-50" alt="...">
-			</div>
+
 		</div>
-		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			<span class="visually-hidden">Previous</span>
-		</button>
-		<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span>
-			<span class="visually-hidden">Next</span>
-		</button>
 	</div>
-</div>{% endblock %}
+
+
+</div></div></div></div></div></div>{% endblock %}

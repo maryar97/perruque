@@ -584,61 +584,73 @@ class AppFixtures extends Fixture
 
         $souscategorie1 = new Categorie();
         $souscategorie1->setnomcat('')
+            ->setParent($categorie1)
             ->setimage('');
             $manager->persist($souscategorie1);
 
         $souscategorie2 = new Categorie();
         $souscategorie2->setnomcat('')
+            ->setParent($categorie1)
             ->setimage('');
             $manager->persist($souscategorie2);
 
         $souscategorie3 = new Categorie();
         $souscategorie3->setnomcat('')
+            ->setParent($categorie1)
             ->setimage('');
             $manager->persist($souscategorie3);
 
         $souscategorie4 = new Categorie();
         $souscategorie4->setnomcat('')
+            ->setParent($categorie2)
             ->setimage('');
             $manager->persist($souscategorie4);
 
         $souscategorie5 = new Categorie();
         $souscategorie5->setnomcat('')
+            ->setParent($categorie2)
             ->setimage('');
             $manager->persist($souscategorie5);
 
         $souscategorie6 = new Categorie();
         $souscategorie6->setnomcat('')
+            ->setParent($categorie2)
             ->setimage('');
             $manager->persist($souscategorie6);
 
         $souscategorie7 = new Categorie();
         $souscategorie7->setnomcat(' ')
+            ->setParent($categorie2)
             ->setimage('');
             $manager->persist($souscategorie7);
 
         $souscategorie8 = new Categorie();
         $souscategorie8->setnomcat('')
+            ->setParent($categorie2)
             ->setimage('');
             $manager->persist($souscategorie8);
 
         $souscategorie9 = new Categorie();
         $souscategorie9->setnomcat('')
+            ->setParent($categorie2)
             ->setimage('');
             $manager->persist($souscategorie9);
 
         $souscategorie10 = new Categorie();
         $souscategorie10->setnomcat('')
+            ->setParent($categorie3)
             ->setimage('');
             $manager->persist($souscategorie10);
 
         $souscategorie11 = new Categorie();
         $souscategorie11->setnomcat('')
+            ->setParent($categorie3)
             ->setimage('');
             $manager->persist($souscategorie11);
 
         $souscategorie12 = new Categorie();
         $souscategorie12->setnomcat('')
+            ->setParent($categorie3)
             ->setimage('');
             $manager->persist($souscategorie12);
 

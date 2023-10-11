@@ -2,17 +2,20 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\ProduitRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ColorationController extends AbstractController
 {
     #[Route('/coloration', name: 'app_coloration')]
-    public function index(): Response
+    public function index(ProduitRepository $produitRepository): Response
     {
+        $produit=$produitRepository->findBy(['categorie'=>1]);
+
         return $this->render('coloration/index.html.twig', [
-            'controller_name' => 'ColorationController',
+            'produits'=>$produit, 
         ]);
     }
 }
