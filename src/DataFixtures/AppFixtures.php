@@ -583,73 +583,73 @@ class AppFixtures extends Fixture
             $manager->persist($categorie3);
 
         $souscategorie1 = new Categorie();
-        $souscategorie1->setnomcat('')
+        $souscategorie1->setnomcat('Bonnets')
             ->setParent($categorie1)
             ->setimage('');
             $manager->persist($souscategorie1);
 
         $souscategorie2 = new Categorie();
-        $souscategorie2->setnomcat('')
+        $souscategorie2->setnomcat('Coloration')
             ->setParent($categorie1)
             ->setimage('');
             $manager->persist($souscategorie2);
 
         $souscategorie3 = new Categorie();
-        $souscategorie3->setnomcat('')
+        $souscategorie3->setnomcat('Lisseur peigne chauffant')
             ->setParent($categorie1)
             ->setimage('');
             $manager->persist($souscategorie3);
 
         $souscategorie4 = new Categorie();
-        $souscategorie4->setnomcat('')
+        $souscategorie4->setnomcat('Carré plongeant')
             ->setParent($categorie2)
             ->setimage('');
             $manager->persist($souscategorie4);
 
         $souscategorie5 = new Categorie();
-        $souscategorie5->setnomcat('')
+        $souscategorie5->setnomcat('Perruque courte')
             ->setParent($categorie2)
             ->setimage('');
             $manager->persist($souscategorie5);
 
         $souscategorie6 = new Categorie();
-        $souscategorie6->setnomcat('')
+        $souscategorie6->setnomcat('Perruque 360°')
             ->setParent($categorie2)
             ->setimage('');
             $manager->persist($souscategorie6);
 
         $souscategorie7 = new Categorie();
-        $souscategorie7->setnomcat(' ')
+        $souscategorie7->setnomcat('Perruque de couleur ')
             ->setParent($categorie2)
             ->setimage('');
             $manager->persist($souscategorie7);
 
         $souscategorie8 = new Categorie();
-        $souscategorie8->setnomcat('')
+        $souscategorie8->setnomcat('Perruque frange')
             ->setParent($categorie2)
             ->setimage('');
             $manager->persist($souscategorie8);
 
         $souscategorie9 = new Categorie();
-        $souscategorie9->setnomcat('')
+        $souscategorie9->setnomcat('Perruque sans colle')
             ->setParent($categorie2)
             ->setimage('');
             $manager->persist($souscategorie9);
 
         $souscategorie10 = new Categorie();
-        $souscategorie10->setnomcat('')
+        $souscategorie10->setnomcat('Pack 3 bundle')
             ->setParent($categorie3)
             ->setimage('');
             $manager->persist($souscategorie10);
 
         $souscategorie11 = new Categorie();
-        $souscategorie11->setnomcat('')
+        $souscategorie11->setnomcat('Pack 3 bundle + closure')
             ->setParent($categorie3)
             ->setimage('');
             $manager->persist($souscategorie11);
 
         $souscategorie12 = new Categorie();
-        $souscategorie12->setnomcat('')
+        $souscategorie12->setnomcat('Pack 3 bundle dégradé + closure')
             ->setParent($categorie3)
             ->setimage('');
             $manager->persist($souscategorie12);
@@ -735,7 +735,7 @@ class AppFixtures extends Fixture
 
         $produit7 = new Produit();
         $produit7->setrubriqueart('Perruques')
-               ->setsousrubriqueart('Carré plongenat')
+               ->setsousrubriqueart('Carré plongenant')
                ->setlibcourt('Bobo wig front lace 13*4 raide noir standard. ')
                ->setliblong('La dentelle HD est un matériau de dentelle royale également appelé dentelle suisse, qui est invisible lorsqu elle est appliquée sur le cuir chevelu. Cela garantit que le porteur de la perruque peut avoir une racine des cheveux exposée, ce qui semble très naturel et rend la dentelle le long de la racine des cheveux hautement indétectable.')
                ->setreffou('fournisseur8')

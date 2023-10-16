@@ -28,13 +28,15 @@
 
 					<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-					<button class="btn btn-lg btn-primary" type="submit">
+					<button class="btn btn-lg btn btn-outline-danger" type="submit">
 						Connexion
 					</button>
 					
-					<button class="btn btn-lg btn-primary" type="submit">
+					<a href="{{ path('app_register') }}"<button class="btn btn-lg btn btn-outline-danger" type="submit">
 						Inscription
 					</button>
+					</a>
+					
 				</form>
 			</div>
 		</div>

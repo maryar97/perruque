@@ -1,20 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello Pack3BundlePlusClosureController!{% endblock %}
+{% block title %}Hello Pack3BundlePlusClosureController!
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<section class="container">
+		<div class="row">
+			<div class="col-6">
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/arlette/Documents/CDA/ProjetFilRouge/mon-projet/src/Controller/Pack3BundlePlusClosureController.php'|file_link(0) }}">src/Controller/Pack3BundlePlusClosureController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/arlette/Documents/CDA/ProjetFilRouge/mon-projet/templates/pack3_bundle_plus_closure/index.html.twig'|file_link(0) }}">templates/pack3_bundle_plus_closure/index.html.twig</a></code></li>
-    </ul>
-</div>
+				<br/>
+				<img src="{{ asset('images/Tissages brésilien/PACK 3 BUNDLE + CLOSURE/closure1.jpg') }}" class="d-block w-50" alt="..."/>
+				<br/>
+				<img src="{{ asset('images/Tissages brésilien/PACK 3 BUNDLE + CLOSURE/closure2.jpg') }}" class="d-block w-50" alt="..."/>
+				<br/>
+				<img src="{{ asset('images/Tissages brésilien/PACK 3 BUNDLE + CLOSURE/closure3.jpg') }}" class="d-block w-50" alt="..."/>
+
+			</div>
+		</div>
+	</section>
+
+
 {% endblock %}

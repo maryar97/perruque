@@ -6,9 +6,9 @@
 
 {% block body %}
 	<!-- <img src="images/Perruques 360°/image50.jpeg" alt=""> -->
-	<section class="container">
-		<div class="row">
-			<div class="col">
+	<main class="container">
+		<section class="row">
+			<div class="col-12">
 				<div>
 					<p>
 						<br>
@@ -69,32 +69,31 @@
 					Vous avez le choix des matières: perruques naturelles ou perruques synthétiques
 					<br/>
 					en n'oubliant pas l'indispensable bonnet qui permet de conserver toute leur fraicheur à vos
-																					perruques.<br/>
+																																																								perruques.<br/>
 					Profitez également des nombreux modèles de perruques et lace wig à petits prix.
 
 				</p>
 				<br/>
 			</div>
-
-			{% for category in categories %}
-				{% if category.parent == null %}
-
+			
+{% for categorie in categories %}
+					{% if categorie.parent == null %}
 					<div class="col-12">
-						<h2> {{ category.nomcat }} </h2> 
+						<h2>{{ categorie.nomcat }}</h2>
+					{% for cat in categorie.categories %}
+						<p>{{ cat.nomcat }}</p>
+					{% endfor %}
+					{% endif %}
+					
+
+					
+							
+						
 					</div>
-					{% else %}
-						<div class="col-3">
-							<a href="#">{{ category.nomcat}} </a>
-							</div>
-				{% endif %}
-
-			{% endfor %}
-			<div class="col-12">
-				{{ dump()}}
-			</div>
-
-		</div>
-	</div>
+					
+								{% endfor %}
 
 
-</div></div></div></div></div></div>{% endblock %}
+			
+
+				{% endblock %}
