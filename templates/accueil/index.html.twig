@@ -6,94 +6,53 @@
 
 {% block body %}
 	<!-- <img src="images/Perruques 360°/image50.jpeg" alt=""> -->
-	<main class="container">
-		<section class="row">
-			<div class="col-12">
-				<div>
-					<p>
-						<br>
-						<FONT color="#C7050E">
-							<h2>
-								Perruque
-							</h2>
-						</FONT>
-						<br>
-					</p>
-				</br>
-				Une sélection de perruques afro de qualité adaptée à vos besoins, légères et faciles à mettre en place.
-				<br/>
-				Si vous recherchez une teinte en particulier,
-				<FONT color="#C7050E">perruque orangée</FONT>
-				ou
-				<FONT color="#C7050E">perruque noire
-				</FONT>.
-				<br/>
-				LYAR Hair et les fabricants redoublent d'inventivité pour des styles variés :
-				<br/>
-				bouclés ou lisses, courtes ou longues; des modèles toujours plus faciles à poser:<br>
+
+
+	<img src="{{ asset('images/2.jpg') }}" class="d-block w-100" alt="..."/>
+</br>
+
+
+<div class="container">
+	<section class="row">
+		<div class="col-12"></div>
+		<div class="card" style="width: 18rem;">
+			<img src="{{ asset('images/Accessoires/BONNETS/bo1.jpeg') }}" class="d-block w-100" alt="..."/>
+			<div class="card-body">
+				<h5 class="card-title">Bonnets</h5>
+				<a href="#" class="btn btn-primary">Ajouter au panier</a>
 			</br>
 
+		</div>
 
-			<a href="{{ path('app_carr_plongeant') }}">
-				<FONT color="#C7050E">CARRÉ PLONGEANT
-				</FONT>
-				<br/>
-				<a href="{{ path('app_perruque_courte') }}">
-					<FONT color="#C7050E">
-						PERRUQUE COURTE
-					</FONT>
-					<br/>
-					<a href="{{ path('app_perruques360_') }}">
-						<FONT color="#C7050E">LACE WIG
-						</FONT>
-					</a>
-					<br/>
-					<a href="{{ path('app_perruques_de_couleurs') }}">
-						<FONT color="#C7050E">PERRUQUE DE COULEUR
-						</FONT>
-						<br/>
-					</a>
-					<a href="{{ path('app_perruques_frange') }}">
-						<FONT color="#C7050E">PERRUQUE DE FRANGE
-						</FONT>
-						<br/>
-					</a>
-					<a href="{{ path('app_perruques_sans_colle') }}">
-						<FONT color="#C7050E">PERRUQUE SANS COLLE
-						</FONT>
-						<br/>
-					</a>
-
-
-					<br/>
-					Vous avez le choix des matières: perruques naturelles ou perruques synthétiques
-					<br/>
-					en n'oubliant pas l'indispensable bonnet qui permet de conserver toute leur fraicheur à vos
-																																																								perruques.<br/>
-					Profitez également des nombreux modèles de perruques et lace wig à petits prix.
-
-				</p>
-				<br/>
-			</div>
-			
-{% for categorie in categories %}
-					{% if categorie.parent == null %}
-					<div class="col-12">
-						<h2>{{ categorie.nomcat }}</h2>
-					{% for cat in categorie.categories %}
-						<p>{{ cat.nomcat }}</p>
-					{% endfor %}
-					{% endif %}
-					
-
-					
-							
-						
-					</div>
-					
-								{% endfor %}
+	    </div>
+    </section></br>
+</div> 
+    <div class="container">
+		<section class="row">
+            <div class="col-12"></div>
+            <div class="card" style="width: 18rem;">
+	            <img src="{{ asset('images/Accessoires/COLORATION/colo2.jpeg') }}" class="d-block w-100" alt="..."/>
+	            <div class="card-body">
+		            <h5 class="card-title">Coloration</h5>
+		            <a href="#" class="btn btn-primary">Ajouter au panier</a>
+	                  </br>
+                </div>
+            </div>
+        </section></br>
+	</div>
+	 <div class="container">
+		<section class="row">
+            <div class="col-12"></div>
+            <div class="card" style="width: 18rem;">
+	            <img src="{{ asset('images/Accessoires/acc.JPG') }}" class="d-block w-100" alt="..."/>
+	            <div class="card-body">
+		            <h5 class="card-title">Lisseur peigne chauffant</h5>
+		            <a href="#" class="btn btn-primary">Ajouter au panier</a>
+	                  </br>
+                </div>
+            </div>
+        </section></br>
+	</div> 
 
 
-			
-
-				{% endblock %}
+{% endblock %}

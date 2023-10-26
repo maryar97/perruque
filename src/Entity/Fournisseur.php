@@ -126,7 +126,7 @@ class Fournisseur
 
 
     /**
-     * @return Collection<int, Produit>
+     * @return Collection<int, Produits>
      */
 
 

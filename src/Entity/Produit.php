@@ -2,11 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\ProduitRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\Fournisseur;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ProduitRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: ProduitRepository::class)]
 class Produit
@@ -39,16 +40,28 @@ class Produit
 
     
 
-    #[ORM\ManyToOne(inversedBy: 'Produit')]
+    
+
+    #[ORM\ManyToOne(inversedBy: 'Produits')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Fournisseur $fournisseur = null;
 
-    #[ORM\ManyToOne(inversedBy: 'Produit')]
+    #[ORM\ManyToOne(inversedBy: 'Produits')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Categorie $categorie = null;
 
     
+    public function __construct()
+    {
+        $this->fournisseur = new ArrayCollection();
+        $this->categorie = new ArrayCollection();
+    }
 
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
     
 
     public function getRubriqueart(): ?string

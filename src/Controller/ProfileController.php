@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/profil', name: 'app_profile_')]
+#[Route('/profil', name: 'profile_')]
 class ProfileController extends AbstractController
 {
     #[Route('/', name: 'index')]
@@ -16,8 +16,8 @@ class ProfileController extends AbstractController
             'controller_name' => 'Profile de l\'utilisateur',
         ]);
     }
-    #[Route('/commande', name: 'commande')]
-    public function commande(): Response
+    #[Route('/commandes', name: 'commandes')]
+    public function commandes(): Response
     {
         return $this->render('profile/index.html.twig', [
             'controller_name' => 'Commandes de l\'utilisateur',
