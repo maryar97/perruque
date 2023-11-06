@@ -16,8 +16,8 @@ class ProduitsController extends AbstractController
     {
         return $this->render('produits/index.html.twig');
     }
-    #[Route('/{sousrubriqueart}', name: 'details')]
-    public function details(Produit $produit): Response
+    #[Route('/sousrubriqueart/{id}', name: 'details')]
+    public function details(Produit $produit, $id): Response
     {
         return $this->render('produits/detail.html.twig', compact('produit'));
 

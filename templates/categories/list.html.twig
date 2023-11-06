@@ -15,8 +15,8 @@
 			    <article class="card h-100"> 
 				    <div class="card-body"> 
 					    <h2 class="card-title">{{ produit.sousrubriqueart}} </h2> 
-						<p class="card-text">{{produit.liblong}} </p> 
-						<a href="{{path('produits_details'} ) }}" class="btn btn-primary"> Voir les détails </a> 
+						<p class="card-text">{{ produit.liblong}} </p> 
+						<a href="{{path('produits_details', {'id':produit.id}) }}" class="btn btn-primary"> Voir les détails </a> 
 					</div> 
 				</article> 
 			</div> 			
