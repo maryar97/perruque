@@ -8,7 +8,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/produits', name: 'produits_')]
-
 class ProduitsController extends AbstractController
 {
     #[Route('/', name: 'index')]
@@ -19,7 +18,7 @@ class ProduitsController extends AbstractController
     #[Route('/sousrubriqueart/{id}', name: 'details')]
     public function details(Produit $produit, $id): Response
     {
-        return $this->render('produits/detail.html.twig', compact('produit'));
+        return $this->render('produits/details.html.twig', compact('produit'));
 
     }
 } 

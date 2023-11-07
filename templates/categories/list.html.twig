@@ -14,9 +14,13 @@
 			<div class="col-3 mb-3">
 			    <article class="card h-100"> 
 				    <div class="card-body"> 
-					    <h2 class="card-title">{{ produit.sousrubriqueart}} </h2> 
-						<p class="card-text">{{ produit.liblong}} </p> 
-						<a href="{{path('produits_details', {'id':produit.id}) }}" class="btn btn-primary"> Voir les détails </a> 
+					    <h2 class="card-title">{{ produit.sousrubriqueart }} </h2> 
+						<p class="card-text">{{ produit.libcourt}} </p> 
+						<div class="col-4"> 
+							<img src="{{ asset('images/2.jpg') }}" class="d-block w-100" alt="..."/></br> 
+
+						</div> 
+						<a href="{{path('produits_details', {'id':categorie.id}) }}" class="btn btn-primary"> Voir les détails </a> 
 					</div> 
 				</article> 
 			</div> 			
