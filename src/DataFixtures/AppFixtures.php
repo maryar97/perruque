@@ -423,57 +423,57 @@ class AppFixtures extends Fixture
 
 
         $livraison1 = new Livraison();
-        $livraison1->setlivrdate(new \DateTime())
+        $livraison1->setlivrdate(new \DateTimeImmutable())
                 ->setlivraisondescp('hhgh')
                 ->setIdUsers(3)
                 ->setmodelivraison('Colossimo');
                 $manager->persist($livraison1);
 
         $livraison2 = new Livraison();
-        $livraison2->setlivrdate(new \DateTime())
+        $livraison2->setlivrdate(new \DateTimeImmutable())
                 ->setlivraisondescp('hhgh')
                 ->setIdUsers(6)
                 ->setmodelivraison('Chronopost');
                 $manager->persist($livraison2);
 
         $livraison3 = new Livraison();
-        $livraison3->setlivrdate(new \DateTime())
+        $livraison3->setlivrdate(new \DateTimeImmutable())
                 ->setlivraisondescp('hhgh')
                 ->setIdUsers(1)
                 ->setmodelivraison('Mondial relay');
                 $manager->persist($livraison3);
 
         $livraison4 = new Livraison();
-        $livraison4->setlivrdate(new \DateTime())
+        $livraison4->setlivrdate(new \DateTimeImmutable())
                 ->setlivraisondescp('hhgh')
                 ->setIdUsers(5)
                 ->setmodelivraison('Mondial relay');
                 $manager->persist($livraison4);
 
         $livraison5 = new Livraison();
-        $livraison5->setlivrdate(new \DateTime())
+        $livraison5->setlivrdate(new \DateTimeImmutable())
                 ->setlivraisondescp('hhgh')
                 ->setIdUsers(4)
                 ->setmodelivraison('Colossimo');
                 $manager->persist($livraison5);
 
         $livraison6 = new Livraison();
-        $livraison6->setlivrdate(new \DateTime())
+        $livraison6->setlivrdate(new \DateTimeImmutable())
                 ->setlivraisondescp('hhgh')
                 ->setIdUsers(2)
                 ->setmodelivraison('Chronopost');
                 $manager->persist($livraison6);
 
         $commande1 = new Commande();
-        $commande1->setdatecom(new \DateTime())
+        $commande1->setdatecom(new \DateTimeImmutable())
                ->settotalcom(2)
                ->setdescpcom('bgng')
                ->setidpaiement(1)
-               ->setdatepaiement(new \DateTime())
+               ->setdatepaiement(new \DateTimeImmutable())
                ->setdescppaiement('Diféré')
                ->setmodepaiement('Carte bancaire')
                ->setidfacture(4521)
-               ->setfacturedate(new \DateTime())
+               ->setfacturedate(new \DateTimeImmutable())
                ->setfacturetotalttc(124)
                ->setfacturetotaltva(104)
                ->setfacturetotalht(564)
@@ -482,15 +482,15 @@ class AppFixtures extends Fixture
                $manager->persist($commande1);
 
         $commande2 = new Commande();
-        $commande2->setdatecom(new \DateTime())
+        $commande2->setdatecom(new \DateTimeImmutable())
                ->settotalcom(2)
                ->setdescpcom('bgng')
                ->setidpaiement(2)
-               ->setdatepaiement(new \DateTime())
+               ->setdatepaiement(new \DateTimeImmutable())
                ->setdescppaiement('Diféré')
                ->setmodepaiement('carte bancaire')
                ->setidfacture(4521)
-               ->setfacturedate(new \DateTime())
+               ->setfacturedate(new \DateTimeImmutable())
                ->setfacturetotalttc(124)
                ->setfacturetotaltva(104)
                ->setfacturetotalht(564)
@@ -499,15 +499,15 @@ class AppFixtures extends Fixture
                $manager->persist($commande2);
 
         $commande3 = new Commande();
-        $commande3->setdatecom(new \DateTime())
+        $commande3->setdatecom(new \DateTimeImmutable())
                ->settotalcom(3)
                ->setdescpcom('bgng')
                ->setidpaiement(3)
-               ->setdatepaiement(new \DateTime())
+               ->setdatepaiement(new \DateTimeImmutable())
                ->setdescppaiement('Diféré')
                ->setmodepaiement('Carte bancaire')
                ->setidfacture(4521)
-               ->setfacturedate(new \DateTime())
+               ->setfacturedate(new \DateTimeImmutable())
                ->setfacturetotalttc(124)
                ->setfacturetotaltva(104)
                ->setfacturetotalht(564)
@@ -516,15 +516,15 @@ class AppFixtures extends Fixture
                $manager->persist($commande3);
 
         $commande4 = new Commande();
-        $commande4->setdatecom(new \DateTime())
+        $commande4->setdatecom(new \DateTimeImmutable())
                ->settotalcom(1)
                ->setdescpcom('bgng')
                ->setidpaiement(4)
-               ->setdatepaiement(new \DateTime())
+               ->setdatepaiement(new \DateTimeImmutable())
                ->setdescppaiement('Comptant')
                ->setmodepaiement('Carte bancaire')
                ->setidfacture(4521)
-               ->setfacturedate(new \DateTime())
+               ->setfacturedate(new \DateTimeImmutable())
                ->setfacturetotalttc(124)
                ->setfacturetotaltva(104)
                ->setfacturetotalht(564)
@@ -533,15 +533,15 @@ class AppFixtures extends Fixture
                $manager->persist($commande4);
 
         $commande5 = new Commande();
-        $commande5->setdatecom(new \DateTime())
+        $commande5->setdatecom(new \DateTimeImmutable())
                ->settotalcom(1)
                ->setdescpcom('bgng')
                ->setidpaiement(5)
-               ->setdatepaiement(new \DateTime())
+               ->setdatepaiement(new \DateTimeImmutable())
                ->setdescppaiement('Comptant')
                ->setmodepaiement('Carte bancaire')
                ->setidfacture(4521)
-               ->setfacturedate(new \DateTime())
+               ->setfacturedate(new \DateTimeImmutable())
                ->setfacturetotalttc(124)
                ->setfacturetotaltva(104)
                ->setfacturetotalht(564)
@@ -550,15 +550,15 @@ class AppFixtures extends Fixture
                $manager->persist($commande5);
 
         $commande6 = new Commande();
-        $commande6->setdatecom(new \DateTime())
+        $commande6->setdatecom(new \DateTimeImmutable())
                ->settotalcom(2)
                ->setdescpcom('bgng')
                ->setidpaiement(6)
-               ->setdatepaiement(new \DateTime())
+               ->setdatepaiement(new \DateTimeImmutable())
                ->setdescppaiement('Comptant')
                ->setmodepaiement('Carte bancaire')
                ->setidfacture(4521)
-               ->setfacturedate(new \DateTime())
+               ->setfacturedate(new \DateTimeImmutable())
                ->setfacturetotalttc(124)
                ->setfacturetotaltva(104)
                ->setfacturetotalht(564)
