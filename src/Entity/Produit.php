@@ -56,8 +56,6 @@ class Produit
     
     public function __construct()
     {
-        $this->fournisseur = new ArrayCollection();
-        $this->categorie = new ArrayCollection();
         $this->detailscommandes = new ArrayCollection();
     }
 

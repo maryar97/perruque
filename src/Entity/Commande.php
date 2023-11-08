@@ -64,7 +64,7 @@ class Commande
     #[ORM\OneToMany(mappedBy: 'Commande', targetEntity: Detailscommandes::class, orphanRemoval: true)]
     private Collection $detailscommandes;
 
-    #[ORM\Column(length: 20)]
+    #[ORM\Column(length: 20, nullable:true)]
     private ?string $reference = null;
 
     public function __construct()
