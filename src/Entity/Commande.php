@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CommandeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -14,8 +16,8 @@ class Commande
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $datecom = null;
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
+    private ?\DateTimeImmutable $datecom = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 7, scale: 2)]
     private ?string $totalcom = null;
@@ -26,8 +28,8 @@ class Commande
     #[ORM\Column]
     private ?int $idpaiement = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $datepaiement = null;
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
+    private ?\DateTimeImmutable $datepaiement = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $descppaiement = null;
@@ -38,8 +40,8 @@ class Commande
     #[ORM\Column]
     private ?int $idfacture = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $facturedate = null;
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
+    private ?\DateTimeImmutable $facturedate = null;
 
     #[ORM\Column]
     private ?float $facturetotalttc = null;
@@ -59,19 +61,31 @@ class Commande
     #[ORM\JoinColumn(nullable: false)]
     private ?Livraison $livraison = null;
 
+    #[ORM\OneToMany(mappedBy: 'Commande', targetEntity: Detailscommandes::class, orphanRemoval: true)]
+    private Collection $detailscommandes;
+
+    #[ORM\Column(length: 20)]
+    private ?string $reference = null;
+
+    public function __construct()
+    {
+        $this->detailscommandes = new ArrayCollection();
+    }
+
     
 
     public function getId(): ?int
     {
+        
         return $this->id;
     }
 
-    public function getDatecom(): ?\DateTimeInterface
+    public function getDatecom(): ?\DateTimeImmutable
     {
         return $this->datecom;
     }
 
-    public function setDatecom(\DateTimeInterface $datecom): self
+    public function setDatecom(\DateTimeImmutable $datecom): self
     {
         $this->datecom = $datecom;
 
@@ -114,12 +128,12 @@ class Commande
         return $this;
     }
 
-    public function getDatepaiement(): ?\DateTimeInterface
+    public function getDatepaiement(): ?\DateTimeImmutable
     {
         return $this->datepaiement;
     }
 
-    public function setDatepaiement(\DateTimeInterface $datepaiement): self
+    public function setDatepaiement(\DateTimeImmutable $datepaiement): self
     {
         $this->datepaiement = $datepaiement;
 
@@ -162,12 +176,12 @@ class Commande
         return $this;
     }
 
-    public function getFacturedate(): ?\DateTimeInterface
+    public function getFacturedate(): ?\DateTimeImmutable
     {
         return $this->facturedate;
     }
 
-    public function setFacturedate(\DateTimeInterface $facturedate): self
+    public function setFacturedate(\DateTimeImmutable $facturedate): self
     {
         $this->facturedate = $facturedate;
 
@@ -231,6 +245,48 @@ class Commande
     public function setLivraison(?Livraison $livraison): self
     {
         $this->livraison = $livraison;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Detailscommandes>
+     */
+    public function getDetailscommandes(): Collection
+    {
+        return $this->detailscommandes;
+    }
+
+    public function addDetailscommande(Detailscommandes $detailscommande): static
+    {
+        if (!$this->detailscommandes->contains($detailscommande)) {
+            $this->detailscommandes->add($detailscommande);
+            $detailscommande->setCommande($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDetailscommande(Detailscommandes $detailscommande): static
+    {
+        if ($this->detailscommandes->removeElement($detailscommande)) {
+            // set the owning side to null (unless already changed)
+            if ($detailscommande->getCommande() === $this) {
+                $detailscommande->setCommande(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getReference(): ?string
+    {
+        return $this->reference;
+    }
+
+    public function setReference(string $reference): static
+    {
+        $this->reference = $reference;
 
         return $this;
     }

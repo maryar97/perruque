@@ -50,11 +50,15 @@ class Produit
     #[ORM\JoinColumn(nullable: false)]
     private ?Categorie $categorie = null;
 
+    #[ORM\OneToMany(mappedBy: 'Produit', targetEntity: Detailscommandes::class)]
+    private Collection $detailscommandes;
+
     
     public function __construct()
     {
         $this->fournisseur = new ArrayCollection();
         $this->categorie = new ArrayCollection();
+        $this->detailscommandes = new ArrayCollection();
     }
 
 
@@ -168,6 +172,36 @@ class Produit
     public function setCategorie(?Categorie $categorie): self
     {
         $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Detailscommandes>
+     */
+    public function getDetailscommandes(): Collection
+    {
+        return $this->detailscommandes;
+    }
+
+    public function addDetailscommande(Detailscommandes $detailscommande): static
+    {
+        if (!$this->detailscommandes->contains($detailscommande)) {
+            $this->detailscommandes->add($detailscommande);
+            $detailscommande->setProduit($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDetailscommande(Detailscommandes $detailscommande): static
+    {
+        if ($this->detailscommandes->removeElement($detailscommande)) {
+            // set the owning side to null (unless already changed)
+            if ($detailscommande->getProduit() === $this) {
+                $detailscommande->setProduit(null);
+            }
+        }
 
         return $this;
     }
