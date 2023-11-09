@@ -22,44 +22,59 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
-              'attr' => [
+                'attr' => [
                     'class' => 'form-control'
-              ]
+                ],
+                'label' => 'E-mail'
             ])
             ->add('nom', TextType::class, [
                 'attr' => [
                     'class' => 'form-control'
-                ]
+                ],
+                'label' => 'Nom'
+
             ])
             ->add('prenom', TextType::class, [
                 'attr' => [
                     'class' => 'form-control'
-                ]
+                ],
+                'label' => 'Prénom'
+
             ])
             ->add('sexe', TextType::class, [
                 'attr' => [
                     'class' => 'form-control'
-                ]
+                ],
+                'label' => 'Sexe'
+
             ])
             ->add('adresse', TextType::class, [
                 'attr' => [
                     'class' => 'form-control'
-                ]
+                ],
+                'label' => 'Adresse'
+
             ])
             ->add('codepostal', TextType::class, [
                 'attr' => [
                     'class' => 'form-control'
-                ]
+                ],
+                'label' => 'Code postal'
+
             ])
             ->add('ville', TextType::class, [
                 'attr' => [
                     'class' => 'form-control'
-                ]
+                ],
+                'label' => 'Ville'
+
             ])
             ->add('telephone', TextType::class, [
                 'attr' => [
                     'class' => 'form-control'
-                ]
+                ],
+                'label' => 'Téléphone'
+
             ])
             ->add('RGPDConsent', CheckboxType::class, [
                 'mapped' => false,
@@ -89,6 +104,8 @@ class RegistrationFormType extends AbstractType
                         'max' => 4096,
                     ]),
                 ],
+                'label' => 'Mot de passe'
+
             ])
         ;
     }

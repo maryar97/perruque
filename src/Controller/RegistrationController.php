@@ -39,16 +39,16 @@ class RegistrationController extends AbstractController
 
             $entityManager->persist($user);
             $entityManager->flush();
-            // do anything else you need here, like send an email
+        // do anything else you need here, like send an email
 
-            // on génère le JWT de l'utilisation 
-            // on crée Header 
+        // on génère le JWT de l'utilisation 
+        // on crée Header 
             $header = [
                 'typ' => 'JWT',
                 'alg' => 'HS256'
             ];
 
-            // on crée le payload
+        // on crée le payload
             $payload = [
                 'user_id' => $user->getId()
             ];
@@ -56,10 +56,12 @@ class RegistrationController extends AbstractController
             // on génère le token 
             $token = $jwt->generate($header, $payload,
             $this->getParameter('app.jwtsecret'));
+            // dd($token);
 
-            $user->setResetToken($token);
 
-            // on envoie un mail
+        // $user->setResetToken($token);
+
+        // on envoie un mail
             $mail->send(
                 'no-reply@monsite.net',
                 $user->getEmail(),
@@ -81,18 +83,20 @@ class RegistrationController extends AbstractController
     }
 
     #[Route('/verif/{token}', name: 'verify_user')]
-    public function verifyUser($token, JWTService $jwt, UsersRepository $usersRepository, EntityManagerInterface $em): Response 
+    public function verifyUser($token, JWTService $jwt, UsersRepository $usersRepository, EntityManagerInterface $em ): Response 
     {
+             // dd($jwt->check($token, $this->getParameter('app.jwtsecret'))); 
+
         // on verifie si le token est valide, n'a pas expiré et n'a pas été modifié 
-        if($jwt->isValid($token) && !$jwt->isExpired($token) && $jwt->check($token, $this->getParameter('app.jwtsecret')))
-        {
-            // on récupère le payload 
+        if($jwt->isValid($token) && !$jwt->isExpired($token) && 
+        $jwt->check($token, $this->getParameter('app.jwtsecret'))){
+        // on récupère le payload 
             $payload = $jwt->getPayload($token);
 
-            // on récupère le user du token 
+        // on récupère le user du token 
             $user = $usersRepository->find($payload['user_id']); 
 
-            // on vérifie que l'utilisateur existe et n' a pas encore activé son compte 
+        // on vérifie que l'utilisateur existe et n'a pas encore activé son compte 
             if($user && !$user->getIsVerified()){
                 $user->setIsVerified(true); 
                 $em->flush($user);
@@ -106,11 +110,12 @@ class RegistrationController extends AbstractController
         return $this->redirectToRoute('app_login');
     }
 
+
     #[Route('/renvoiverif', name: 'resend_verif')]
     public function resendVerif(JWTService $jwt, SendMailService $mail, UsersRepository $usersRepository): Response 
     {
 
-        $user = $this->getUser();
+        $user = $this->getUser(); 
 
         if(!$user){
             $this->addFlash('danger', 'Vous devez être connecté pour accéder à cette page');
@@ -153,4 +158,4 @@ class RegistrationController extends AbstractController
                 $this->addFlash('success', 'Email de vérification envoyé');
                 return $this->redirectToRoute('profile_index');
     }
-}
+} 

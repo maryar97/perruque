@@ -21,15 +21,15 @@ class SendMailService
     {
         //on crée le mail
         $email = (new TemplatedEmail())
-          ->from($from)
-          ->to($to)
-          ->subject($subject)
-          ->htmlTemplate("emails/$template.html.twig")
-          ->context($context);
+            ->from($from)
+            ->to($to)
+            ->subject($subject)
+            ->htmlTemplate("emails/$template.html.twig")
+            ->context($context);
 
-          // on envoie le mail
-          
-          $this->mailer->send($email); 
+            // on envoie le mail
+            
+            $this->mailer->send($email); 
 
     }
 }

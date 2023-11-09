@@ -15,8 +15,9 @@ class JWTService
     
             $payload['iat'] = $now->getTimestamp();
             $payload['exp'] = $exp; 
-            }
-       
+        }
+            
+    
         // on encode en base64
         $base64Header = base64_encode(json_encode($header));
         $base64Payload = base64_encode(json_encode($payload));
@@ -34,15 +35,16 @@ class JWTService
 
         $base64Signature = base64_encode($signature);
 
-        $base64Signature = str_replace(['+', '/', '='], ['-', '_', '']
-        , $base64Signature);
+        $base64Signature = str_replace(['+', '/', '='], ['-', '_',
+        ''], $base64Signature);
 
         // on crée le token 
         $jwt = $base64Header . '.' . $base64Payload . '.' . $base64Signature; 
+
         return $jwt; 
     }
 
-    // on verifie que le token est valide (correctement formé)
+      // on verifie que le token est valide (correctement formé)
     
     public function isValid(string $token): bool 
     {
@@ -52,7 +54,7 @@ class JWTService
         ) === 1; 
     }
     // on recupère le payload
-    public function getPayload(string $token): array 
+    public function getPayload(string $token): array
     {
         // on le démonte le token 
         $array = explode('.', $token);
@@ -64,16 +66,16 @@ class JWTService
     }
 
      // on recupère le Header
-     public function getHeader(string $token): array 
-     {
+        public function getHeader(string $token): array 
+        {
          // on le démonte le token 
-         $array = explode('.', $token);
- 
+        $array = explode('.', $token);
+
          // on décode le Header 
-         $header = json_decode(base64_decode($array[0]), true);
- 
-         return $header; 
-     }
+        $header = json_decode(base64_decode($array[0]), true);
+
+        return $header; 
+        } 
     // on verifie si le token a expiré
     public function isExpired(string $token): bool 
     {

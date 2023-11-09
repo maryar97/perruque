@@ -20,7 +20,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
-    #[Route('/login', name: 'app_login')]
+    #[Route('/connexion', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         // if ($this->getUser()) {
@@ -38,7 +38,7 @@ class SecurityController extends AbstractController
         ]);
     }
 
-    #[Route('/logout', name: 'app_logout')]
+    #[Route('/deconnexion', name: 'app_logout')]
     public function logout(): void
     {
         throw new \LogicException('This method can be blank - it will be
@@ -47,10 +47,10 @@ class SecurityController extends AbstractController
 
     #[Route('/oubli-pass', name: 'forgotten_password')]
     public function forgottenPassword(Request $request,
-     UsersRepository $usersRepository,
-     TokenGeneratorInterface $tokenGeneratorInterface,
-     EntityManagerInterface $entityManager,
-     SendMailService $mail): Response 
+        UsersRepository $usersRepository,
+        TokenGeneratorInterface $tokenGeneratorInterface,
+        EntityManagerInterface $entityManager,
+        SendMailService $mail): Response 
     {
         $form = $this->createForm(ResetPasswordRequestFormType::class);
 
@@ -89,7 +89,7 @@ class SecurityController extends AbstractController
 
         }
         // $user est null
-        $this->addFlash('danger', 'Un problèeme est survenu');
+        $this->addFlash('danger', 'Un problème est survenu');
         return  $this->redirectToRoute('app_login');
     }
 
